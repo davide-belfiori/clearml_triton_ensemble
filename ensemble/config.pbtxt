@@ -1,0 +1,74 @@
+name: "yolo_ensemble"
+platform: "ensemble"
+input: [
+    {
+        name: "input"
+        data_type: TYPE_FP32
+        dims: [640, 640, 3]
+    }
+]
+output: [
+    {
+        name: "boxes"
+        data_type: TYPE_FP32
+        dims: [-1, 4]
+    },
+    {
+        name: "classes"
+        data_type: TYPE_FP32
+        dims: [-1]
+    },
+    {
+        name: "scores"
+        data_type: TYPE_FP32
+        dims: [-1]
+    }
+]
+ensemble_scheduling {
+    step: [
+        {
+            model_name: "yolo_preprocessing"
+            model_version: -1
+            input_map {
+                key: "pre_in"
+                value: "input"
+            }
+            output_map {
+                key: "pre_out"
+                value: "pre_out"
+            }
+        },
+        {
+            model_name: "yolov8n"
+            model_version: -1
+            input_map {
+                key: "images"
+                value: "pre_out"
+            }
+            output_map {
+                key: "output0"
+                value: "output0"
+            }
+        },
+        {
+            model_name: "yolo_postprocessing"
+            model_version: -1
+            input_map {
+                key: "post_in"
+                value: "output0"
+            }
+            output_map {
+                key: "post_b"
+                value: "boxes"
+            }
+            output_map {
+                key: "post_c"
+                value "classes"
+            }
+            output_map {
+                key: "post_s"
+                value: "scores"
+            }
+        }
+    ]
+}

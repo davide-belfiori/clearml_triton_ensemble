@@ -1,0 +1,15 @@
+name: "yolov8n"
+input: [
+    {
+        dims: [1, 3, 640, 640]
+        data_type: TYPE_FP32
+        name: "images"
+    }
+]
+output: [
+    {
+        dims: [1, 84, 8400]
+        datatype: TYPE_FP32
+        name: "output0"
+    }
+]

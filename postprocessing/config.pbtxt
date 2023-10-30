@@ -1,0 +1,25 @@
+name: "yolo_postprocessing"
+input: [
+    {
+        name: "post_in"
+        dims: [1, 84, 8400]
+        data_type: TYPE_FP32
+    }
+]
+output: [
+    {
+        name: "post_b"
+        data_type: TYPE_FP32
+        dims: [-1, 4]
+    },
+    {
+        name: "post_c"
+        data_type: TYPE_FP32
+        dims: [-1]
+    },
+    {
+        name: "post_s"
+        data_type: TYPE_FP32
+        dims: [-1]
+    }
+]

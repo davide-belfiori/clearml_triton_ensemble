@@ -1,0 +1,8 @@
+clearml
+scikit-learn
+joblib
+matplotlib
+ultralytics
+onnx
+onnxruntime
+ipykernel
