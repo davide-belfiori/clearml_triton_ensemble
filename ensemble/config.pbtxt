@@ -63,7 +63,7 @@ ensemble_scheduling {
             }
             output_map {
                 key: "post_c"
-                value "classes"
+                value: "classes"
             }
             output_map {
                 key: "post_s"
