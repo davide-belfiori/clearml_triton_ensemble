@@ -3,7 +3,7 @@ platform: "ensemble"
 input: [
     {
         name: "input"
-        data_type: TYPE_UITN8
+        data_type: TYPE_UINT8
         dims: [640, 640, 3]
     }
 ]
